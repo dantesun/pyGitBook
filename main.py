@@ -4,6 +4,9 @@
 
 import re, os, datetime
 from jinja2 import Environment, FileSystemLoader
+import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
 
 DATAFILE = "git-data.txt"
 HTMLFILE = "gitBook.html"
@@ -46,7 +49,7 @@ for r_commit in r_commits:
         commit.date = datet.strftime('%d-%m-%Y')
         commit.time = datet.strftime('%I:%M:%S %p')
     commits.append(commit)
-    
+
 template = ENV.get_template("main.html")
 
 data = {"title":HEADING,
